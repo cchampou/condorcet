@@ -1,28 +1,70 @@
 <template>
   <div>
-    <input type="text" label="Nom" v-model="question" />
-
-    <textarea
-      name="input-7-1"
-      label="Description"
-      v-model="description"
-    ></textarea>
-
-    <input
-      type="text"
-      label="Ajouter une réponse"
-      v-model="answer"
-      @keypress.enter="addAnswer"
-    />
-    <button color="info" @click="addAnswer">Ajouter</button>
-
-    <div>
-      <div class="panel-block" v-for="answer in answers" :key="answer.slug">
-        {{ answer.value }}
+    <form
+      class="w-full"
+      autocomplete="off"
+      @keypress.enter.prevent
+      @click.prevent
+    >
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            for="grid-first-name"
+          >
+            Question *
+          </label>
+          <input
+            v-model="question"
+            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            id="grid-first-name"
+            type="text"
+          />
+          <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+          <div class="w-full md:w-1/2 px-3">
+            <textarea
+              v-model="description"
+              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            ></textarea>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label
+            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            for="answer"
+          >
+            Ajouter des réponses *
+          </label>
+          <input
+            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="answer"
+            type="text"
+            v-model="answer"
+            @keypress.enter="addAnswer"
+          />
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            @click="addAnswer"
+          >
+            Ajouter
+          </button>
+          <div>
+            <ul>
+              <li v-for="answer in answers" :key="answer.slug">
+                {{ answer.value }}
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <button color="info" @click="createPoll">Créer</button>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        @click="createPoll"
+      >
+        Créer
+      </button>
+    </form>
   </div>
 </template>
 

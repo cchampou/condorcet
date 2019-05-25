@@ -1,37 +1,27 @@
 <template>
   <div>
-    <div v-if="isAuth">
-      <button v-if="canGoBack" icon>
-        <router-link to="/polls">
-          <i>arrow_back</i>
-        </router-link>
-      </button>
-      <div class="headline text-uppercase">
-        <span>Condorcet</span>
-      </div>
-    </div>
+    <Navbar v-if="isAuth"></Navbar>
 
-    <div>
+    <div class="container mx-auto">
       <Notifications :notifications="notifications" />
 
       <transition name="fade" mode="out-in">
         <router-view></router-view>
       </transition>
-      <SpeedDial v-if="isAuth" />
     </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from "vuex";
-import SpeedDial from "./components/SpeedDial";
+import Navbar from "./components/Navbar";
 import Notifications from "./components/Notifications";
 
 export default {
   name: "App",
   components: {
-    Notifications,
-    SpeedDial
+    Navbar,
+    Notifications
   },
   computed: {
     ...mapState("app", ["notifications"]),
