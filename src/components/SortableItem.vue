@@ -1,5 +1,5 @@
 <template>
-  <div class="list-item">{{ answer.value }}</div>
+  <div>{{ answer.value }}</div>
 </template>
 
 <script>
