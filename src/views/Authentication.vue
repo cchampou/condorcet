@@ -1,17 +1,17 @@
 <template>
   <div>
-    <div class="mt-16 flex flex-col justify-center">
+    <div class="mt-10 flex flex-col justify-center">
       <div>
         <Typewriter class="inline-flex text-3xl">
           Bienvenue sur Condorcet
         </Typewriter>
       </div>
-      <span>
+      <span class="mt-4">
         L'application qui vous permet de réaliser des scrutins en utilisant la
-        méthode de Condorcet
+        méthode de Condorcet et de comparer le résultat au scrutin uninominal.
       </span>
 
-      <div class="mt-4">Acceder à l'application via :</div>
+      <div class="mt-12 text-center">Acceder à l'application via :</div>
       <div class="mt-2 flex justify-center">
         <button
           class="mx-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
@@ -72,6 +72,7 @@ import Typewriter from "../components/Typewriter";
 // :style="{
 //       backgroundImage: `url('${require('../assets/images/artistic-background.jpg')}')`
 //     }"
+
 export default {
   name: "Authentication",
   components: {
@@ -81,16 +82,20 @@ export default {
     return {
       videos: [
         {
+          id: "vfTJ4vmIsO4",
+          link: "https://www.youtube.com/embed/vfTJ4vmIsO4?start=260"
+        },
+        {
+          id: "hI89r4LqaCc",
+          link: "https://www.youtube.com/embed/hI89r4LqaCc"
+        },
+        {
           id: "wKimU8jy2a8",
           link: "https://www.youtube.com/embed/wKimU8jy2a8"
         },
         {
           id: "ZoGH7d51bvc",
           link: "https://www.youtube.com/embed/ZoGH7d51bvc?start=534"
-        },
-        {
-          id: "hI89r4LqaCc",
-          link: "https://www.youtube.com/embed/hI89r4LqaCc"
         }
       ]
     };
