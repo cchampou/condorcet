@@ -9,7 +9,7 @@
       <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label
-            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
             for="question"
           >
             Question *
@@ -23,7 +23,7 @@
           <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
 
           <label
-            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
             for="description"
           >
             Description
@@ -35,7 +35,7 @@
         </div>
         <div class="w-full md:w-1/2 px-3">
           <label
-            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
             for="answer"
           >
             Ajouter des réponses *
@@ -49,7 +49,7 @@
               @keypress.enter="addAnswer"
             />
             <button
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              class="bg-teal-500 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded"
               @click="addAnswer"
             >
               Ajouter
@@ -65,7 +65,7 @@
 
         <div class="w-full mt-4 px-3 flex justify-center">
           <button
-            class="w-1/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            class="w-1/3 bg-teal-500 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded"
             @click="createPoll"
           >
             Créer

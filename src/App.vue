@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-teal-600 text-white min-h-screen">
     <Navbar v-if="isAuth"></Navbar>
 
     <div class="container mx-auto mt-10">

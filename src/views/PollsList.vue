@@ -1,39 +1,39 @@
 <template>
   <div class="flex flex-wrap justify-around">
     <div
-      class="max-w-sm rounded overflow-hidden shadow-lg mb-10"
+      class="max-w-sm rounded overflow-hidden shadow-lg mb-10 m-1 bg-teal-500"
       v-for="poll in polls"
       :key="poll.id"
     >
       <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">{{ poll.question }}</div>
-        <p class="text-gray-700 text-base">
+        <p class="text-teal-100 text-base">
           {{ poll.description }}
         </p>
       </div>
-      <div class="px-6 py-4">
+      <div class="px-6 py-4 ">
         <button
-          class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded m-1"
           @click.prevent="copyMagicLink(poll.id)"
         >
           Partager
         </button>
         <button
           v-if="poll.isOwner"
-          class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded m-1"
           @click.prevent="removePoll(poll.id)"
         >
           Supprimer
         </button>
         <button
           v-if="poll.isOwner"
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          class="bg-teal-600 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded m-1"
           @click.prevent="togglePoll(poll.id)"
         >
           {{ poll.isActive ? "Fermer" : "Ré-ouvir" }}
         </button>
         <router-link
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          class="bg-teal-600 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded m-1"
           tag="button"
           :to="{
             name: poll.isActive ? 'poll_show' : 'poll_result',

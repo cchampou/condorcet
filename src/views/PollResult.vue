@@ -42,27 +42,27 @@
       </table>
     </div>
 
-    <div v-if="condorcet && featureFlipping.condorcetRanking">
+    <div v-if="condorcet && featureFlipping.condorcetRanking" class="mt-16 pb-8">
       <div
         class="font-sans flex items-center justify-center bg-blue-darker w-full py-2"
         v-for="item in condorcet.ranking"
         :key="item.slug"
       >
-        <div class="w-1/2 px-6 py-4 rounded overflow-hidden shadow">
+        <div class="w-1/2 px-6 py-4 rounded overflow-hidden shadow bg-white text-teal-800">
           {{ item.rank }} - <span class="font-bold">{{ item.value }}</span> /
           {{ item.wins }} victoire(s) & {{ item.equalities }} match(s) nul(s)
         </div>
       </div>
     </div>
 
-    <div v-if="uninominal && featureFlipping.uninominalRanking">
+    <div v-if="uninominal && featureFlipping.uninominalRanking" class="mt-8 pb-8">
       <h3 class="text-4xl">Uninominal</h3>
       <div
         class="font-sans flex items-center justify-center bg-blue-darker w-full py-2"
         v-for="item in uninominal"
         :key="item.slug"
       >
-        <div class="w-1/2 px-6 py-4 rounded overflow-hidden shadow">
+        <div class="w-1/2 px-6 py-4 rounded overflow-hidden shadow bg-white text-teal-800">
           {{ item.rank }} - <span class="font-bold">{{ item.value }}</span> /
           {{ item.numberOfVotes }} voix
         </div>
