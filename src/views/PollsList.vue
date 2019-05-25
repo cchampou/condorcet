@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-wrap justify-around mb-10">
+  <div class="flex flex-wrap justify-around">
     <div
-      class="max-w-sm rounded overflow-hidden shadow-lg mt-10"
+      class="max-w-sm rounded overflow-hidden shadow-lg mb-10"
       v-for="poll in polls"
       :key="poll.id"
     >

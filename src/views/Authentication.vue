@@ -29,9 +29,9 @@
       </div>
     </div>
 
-    <div class="mt-16">
+    <div class="mt-12">
       <h4 class="text-2xl">Comment fonctionne le vote ?</h4>
-      <div>
+      <div class="mt-4">
         <ul class="list-disc">
           <li>
             Chaque votant classe les alternatives par ordre de préférence
@@ -39,15 +39,15 @@
           <li>
             On organise des duels entre toutes les alternatives
           </li>
-          <li>Celui qui remporte tous les duels est déclaré gagnant</li>
+          <li>Celui qui remporte le plus de duels est déclaré gagnant</li>
         </ul>
       </div>
     </div>
 
-    <div class="mt-16">
+    <div class="mt-12">
       <h4 class="text-2xl">Vidéos qui en parlent :</h4>
 
-      <div class="flex justify-around">
+      <div class="mt-3 flex justify-around">
         <div v-for="video in videos" :key="video.id">
           <div class="px-4 py-2 m-2">
             <iframe
