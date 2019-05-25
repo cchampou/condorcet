@@ -2,7 +2,7 @@
   <div>
     <Navbar v-if="isAuth"></Navbar>
 
-    <div class="container mx-auto">
+    <div class="container mx-auto mt-10">
       <Notifications :notifications="notifications" />
 
       <transition name="fade" mode="out-in">

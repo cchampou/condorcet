@@ -10,23 +10,28 @@
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            for="grid-first-name"
+            for="question"
           >
             Question *
           </label>
           <input
             v-model="question"
-            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            id="grid-first-name"
+            class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            id="question"
             type="text"
           />
           <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
-          <div class="w-full md:w-1/2 px-3">
-            <textarea
-              v-model="description"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            ></textarea>
-          </div>
+
+          <label
+            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            for="description"
+          >
+            Description
+          </label>
+          <textarea
+            v-model="description"
+            class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+          ></textarea>
         </div>
         <div class="w-full md:w-1/2 px-3">
           <label
@@ -35,35 +40,38 @@
           >
             Ajouter des réponses *
           </label>
-          <input
-            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="answer"
-            type="text"
-            v-model="answer"
-            @keypress.enter="addAnswer"
-          />
-          <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            @click="addAnswer"
-          >
-            Ajouter
-          </button>
-          <div>
-            <ul>
-              <li v-for="answer in answers" :key="answer.slug">
-                {{ answer.value }}
-              </li>
-            </ul>
+          <div class="flex">
+            <input
+              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="answer"
+              type="text"
+              v-model="answer"
+              @keypress.enter="addAnswer"
+            />
+            <button
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              @click="addAnswer"
+            >
+              Ajouter
+            </button>
           </div>
+
+          <ul class="list-disc mt-6 ml-10">
+            <li v-for="answer in answers" :key="answer.slug">
+              {{ answer.value }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="w-full mt-4 px-3 flex justify-center">
+          <button
+            class="w-1/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            @click="createPoll"
+          >
+            Créer
+          </button>
         </div>
       </div>
-
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        @click="createPoll"
-      >
-        Créer
-      </button>
     </form>
   </div>
 </template>

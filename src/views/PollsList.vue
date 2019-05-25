@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap justify-between mb-10">
+  <div class="flex flex-wrap justify-around mb-10">
     <div
       class="max-w-sm rounded overflow-hidden shadow-lg mt-10"
       v-for="poll in polls"

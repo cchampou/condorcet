@@ -17,16 +17,16 @@
         </svg>
       </button>
     </div>
-    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+    <div class="justify-end w-full block lg:flex lg:items-center lg:w-auto">
       <div class="text-sm lg:flex-grow">
         <router-link
           to="/polls"
-          class="block mt-4 mx-1 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
+          class="block mt-4 mx-6 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
           >Accueil</router-link
         >
         <router-link
           to="/polls/new"
-          class="block mt-4 mx-1 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
+          class="self-end block mt-4 mx-6 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
           >Créer un scrutin</router-link
         >
       </div>
