@@ -27,22 +27,24 @@
           @click.native="toggleMenu"
           to="/polls"
           class="block mt-4 mx-6 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
-          >Accueil</router-link
-        >
+        >Accueil</router-link>
+        <router-link
+          @click.native="toggleMenu"
+          to="/polls/public"
+          class="self-end block mt-4 mx-6 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
+        >Découvrir</router-link>
         <router-link
           @click.native="toggleMenu"
           to="/polls/new"
           class="self-end block mt-4 mx-6 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
-          >Créer un scrutin</router-link
-        >
+        >Créer un scrutin</router-link>
       </div>
       <div>
         <a
           href="#"
           class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
           @click="signOut"
-          >Deconnexion</a
-        >
+        >Deconnexion</a>
       </div>
     </div>
   </nav>
@@ -81,7 +83,7 @@ export default {
 
 @media (max-width: 1024px) {
   .Menu--hide {
-    transform: translateY(130px);
+    transform: translateY(165px);
   }
 
   .Menu--show {
