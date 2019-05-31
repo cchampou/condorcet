@@ -9,13 +9,11 @@ jest.mock("../../firebase.js", () => ({
   db: {
     collection: () => ({
       where: () => ({
-        where: () => ({
-          get: () => [
-            {
-              data: () => {}
-            }
-          ]
-        })
+        get: () => [
+          {
+            data: () => {}
+          }
+        ]
       })
     })
   }

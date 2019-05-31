@@ -27,17 +27,9 @@ export default {
     const underPolls = await db
       .collection("polls")
       .where("isPublic", "==", true)
-      .where("owner", ">", this.userId)
       .get();
-    const overPolls = await db
-      .collection("polls")
-      .where("isPublic", "==", true)
-      .where("owner", "<", this.userId)
-      .get();
+
     underPolls.forEach(poll => {
-      polls.push({ id: poll.id, ...poll.data() });
-    });
-    overPolls.forEach(poll => {
       polls.push({ id: poll.id, ...poll.data() });
     });
 
