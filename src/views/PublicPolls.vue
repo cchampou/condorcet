@@ -1,7 +1,8 @@
 <template>
   <div v-if="polls">
     <div v-for="poll in polls" :key="poll.id">
-      <button @click="joinPoll">Rejoindre</button>
+      <h3>{{ poll.question }}</h3>
+      <button @click="joinPoll(poll.id)">Rejoindre</button>
     </div>
   </div>
 </template>
@@ -43,7 +44,23 @@ export default {
     this.polls = polls;
   },
   methods: {
-    joinPoll() {}
+    async joinPoll(id) {
+      try {
+        const users = (await db
+          .collection("polls")
+          .doc(id)
+          .get()).data().users;
+
+        db.collection("polls")
+          .doc(id)
+          .update({ users: [...users, this.userId] });
+      } catch (error) {
+        this.addNotification({
+          status: "error",
+          message: "Nous n'avons pas pu te faire rejoindre ce scrutin"
+        });
+      }
+    }
   }
 };
 </script>
