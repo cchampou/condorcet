@@ -5,6 +5,22 @@ import PublicPolls from "../PublicPolls.vue";
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
+jest.mock("../../firebase.js", () => ({
+  db: {
+    collection: () => ({
+      where: () => ({
+        where: () => ({
+          get: () => [
+            {
+              data: () => {}
+            }
+          ]
+        })
+      })
+    })
+  }
+}));
+
 describe("PublicPolls.vue", () => {
   it("should render", () => {
     const store = new Vuex.Store({
