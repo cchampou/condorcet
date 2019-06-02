@@ -1,41 +1,34 @@
 <template>
   <div v-if="polls">
     <div v-for="poll in polls" :key="poll.id">
-      <h3>{{ poll.question }}</h3>
-      <button @click="joinPoll(poll.id)">Rejoindre</button>
+      <Card v-bind="poll" :isJoinable="true" @onJoin="joinPoll"></Card>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState, mapActions } from "vuex";
 import { db } from "../firebase";
+import Card from "../components/Card";
 
 export default {
   name: "PublicPolls",
-  data() {
-    return {
-      polls: null
-    };
+  components: {
+    Card
   },
   computed: {
-    ...mapGetters("user", ["userId"])
+    ...mapGetters("user", ["userId"]),
+    ...mapState({
+      polls: state => {
+        return state.poll.all;
+      }
+    })
   },
-  async created() {
-    let polls = [];
-
-    const underPolls = await db
-      .collection("polls")
-      .where("isPublic", "==", true)
-      .get();
-
-    underPolls.forEach(poll => {
-      polls.push({ id: poll.id, ...poll.data() });
-    });
-
-    this.polls = polls;
+  created() {
+    this.listenPolls(this.userId);
   },
   methods: {
+    ...mapActions("poll", ["listenPolls"]),
     async joinPoll(id) {
       try {
         const users = (await db

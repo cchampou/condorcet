@@ -65,6 +65,7 @@
 import { mapActions, mapState, mapGetters } from "vuex";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 import { db } from "../firebase";
+// import Card from "../components/Card";
 
 export default {
   name: "PollsList",
