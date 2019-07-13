@@ -58,6 +58,7 @@ jobs:
     executor: node
     steps:
       - checkout_and_restore_cache
+      - run: yarn cypress install
       - run: yarn test:e2e
 
   deploy:
