@@ -47,12 +47,18 @@ jobs:
       - checkout_and_restore_cache
       - run: yarn lint
 
-  test:
+  test_unit:
     executor: node
     steps:
       - checkout_and_restore_cache
       - run: yarn test:unit --coverage
       - run: yarn codecov
+
+  test_e2e:
+    executor: node
+    steps:
+      - checkout_and_restore_cache
+      - run: yarn test:e2e
 
   deploy:
     executor: node
@@ -73,14 +79,17 @@ workflows:
       - lint:
           requires:
             - install
-      - test:
+      - test_unit:
+          requires:
+            - install
+      - test_e2e:
           requires:
             - install
       - deploy:
           requires:
             - build
             - lint
-            - test
+            - test_unit
           filters:
             branches:
               only: master

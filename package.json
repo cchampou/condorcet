@@ -7,6 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "cypress run",
     "tdd": "yarn test:unit --watch",
     "fixtures": "node functions/fixtures/index.js",
     "setup": "yarn install && cpy .env.example .env"
