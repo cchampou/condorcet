@@ -1,7 +1,12 @@
 <template>
-  <div v-if="polls">
-    <div v-for="poll in polls" :key="poll.id">
-      <Card v-bind="poll" :isJoinable="true" @onJoin="joinPoll"></Card>
+  <div v-if="polls" class="flex flex-wrap">
+    <div v-for="poll in polls" :key="poll.id" class="w-full md:w-1/2 lg:w-1/3">
+      <Card
+        class="md:mx-2"
+        v-bind="poll"
+        :isJoinable="true"
+        @onJoin="joinPoll"
+      />
     </div>
   </div>
 </template>
