@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <div v-if="loading" class="flex items-center justify-center h-screen">
-      <PulseLoader :loading="loading"></PulseLoader>
-    </div>
-    <div v-else class="flex">
-      <div v-if="polls.length === 0">
+  <Loader>
+    <div class="flex">
+      <div v-if="userPolls.length === 0">
         Tu n'a pas encore de scrutin. Tu peux en créé un en cliquant sur
         <router-link to="polls/new" class="text-teal-500 hover:underline"
           >ce lien</router-link
@@ -14,12 +11,14 @@
       <div v-else class="flex flex-wrap">
         <div
           class="w-full md:w-1/2 lg:w-1/3"
-          v-for="poll in polls"
+          v-for="poll in userPolls"
           :key="poll.id"
         >
           <Card
             class="md:mx-2"
             v-bind="poll"
+            :isJoinable="false"
+            :userId="userId"
             @onShare="copyMagicLink"
             @onToggleStatus="togglePoll"
             @onDelete="deletePoll"
@@ -27,38 +26,27 @@
         </div>
       </div>
     </div>
-  </div>
+  </Loader>
 </template>
 
 <script>
-import { mapActions, mapState, mapGetters } from "vuex";
-import PulseLoader from "vue-spinner/src/PulseLoader.vue";
+import { mapActions, mapGetters } from "vuex";
 import { db } from "../firebase";
 import Card from "../components/Card";
+import Loader from "../components/Loader.vue";
 
 export default {
   name: "PollsList",
   components: {
     Card,
-    PulseLoader
-  },
-  data() {
-    return {
-      waitBeforeDisplay: true
-    };
+    Loader
   },
   mounted() {
     this.listenPolls(this.userId);
-
-    setTimeout(() => {
-      this.waitBeforeDisplay = false;
-    }, 800);
   },
   computed: {
     ...mapGetters("user", ["userId"]),
-    ...mapState({
-      polls: state => state.poll.all
-    }),
+    ...mapGetters("poll", ["userPolls"]),
     loading() {
       return this.polls.length === 0 || this.waitBeforeDisplay;
     }

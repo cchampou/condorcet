@@ -21,7 +21,7 @@
         Partager
       </button>
       <button
-        v-if="isOwner"
+        v-if="owner === userId"
         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full my-1"
         @click.prevent="$emit('onToggleStatus', id)"
       >
@@ -37,7 +37,7 @@
       </button>
 
       <button
-        v-if="isOwner"
+        v-if="owner === userId"
         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-full my-1"
         @click.prevent="$emit('onDelete', id)"
       >
@@ -60,14 +60,16 @@
         Partager
       </button>
       <button
-        v-if="isOwner"
+        v-if="isOwner
+        return this."
         class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         @click.prevent="$emit('onDelete', id)"
       >
         Supprimer
       </button>
       <button
-        v-if="isOwner"
+        v-if="isOwner
+        return this."
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         @click.prevent="$emit('onToggleStatus', id)"
       >
@@ -103,9 +105,12 @@ export default {
       type: String,
       required: true
     },
-
-    isOwner: {
-      type: Boolean,
+    userId: {
+      type: String,
+      required: true
+    },
+    owner: {
+      type: String,
       required: true
     },
     isActive: {
