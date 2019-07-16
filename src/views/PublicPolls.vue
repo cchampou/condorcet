@@ -20,7 +20,6 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import { db } from "../firebase";
 import Card from "../components/Card";
 import Loader from "../components/Loader";
 
@@ -39,22 +38,12 @@ export default {
   },
   methods: {
     ...mapActions("poll", ["fetchPublicPolls"]),
-    async joinPoll(id) {
-      try {
-        const users = (await db
-          .collection("polls")
-          .doc(id)
-          .get()).data().users;
-
-        db.collection("polls")
-          .doc(id)
-          .update({ users: [...users, this.userId] });
-      } catch (error) {
-        this.addNotification({
-          status: "error",
-          message: "Nous n'avons pas pu te faire rejoindre ce scrutin"
-        });
-      }
+    joinPoll(id) {
+      this.$router.push({
+        name: "poll_join",
+        params: { id },
+        query: { token: this.publicPolls.find(poll => poll.id === id).token }
+      });
     }
   }
 };
