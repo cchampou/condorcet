@@ -6,6 +6,7 @@
     </div>
     <div class="flex justify-between flex-wrap px-6 py-4">
       <router-link
+        v-if="users.includes(userId)"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full my-1"
         tag="button"
         :to="{
@@ -15,6 +16,7 @@
         >{{ isActive ? "Voter" : "Résultats" }}</router-link
       >
       <button
+        v-if="users.includes(userId)"
         class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded w-full my-1"
         @click.prevent="$emit('onShare', id)"
       >
@@ -29,6 +31,7 @@
       </button>
 
       <button
+        v-if="users.includes(userId) === false"
         class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded w-full my-1"
         @click.prevent="$emit('onJoin', id)"
       >
@@ -72,6 +75,10 @@ export default {
     },
     isActive: {
       type: Boolean,
+      required: true
+    },
+    users: {
+      type: Array,
       required: true
     }
   }
