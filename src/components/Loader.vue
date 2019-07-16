@@ -1,6 +1,8 @@
 <template>
   <div>
-    <PulseLoader v-if="loading"></PulseLoader>
+    <div v-if="loading" class="flex justify-center items-center h-screen">
+      <PulseLoader></PulseLoader>
+    </div>
     <div v-else>
       <slot></slot>
     </div>

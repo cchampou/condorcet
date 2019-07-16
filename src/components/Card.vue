@@ -29,7 +29,6 @@
       </button>
 
       <button
-        v-if="isJoinable"
         class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded w-full my-1"
         @click.prevent="$emit('onJoin', id)"
       >
@@ -45,48 +44,6 @@
       </button>
     </div>
   </div>
-  <!-- <div>
-    <div class="px-6 py-4">
-      <div class="font-bold text-xl mb-2">{{ question }}</div>
-      <p class="text-gray-700 text-base">
-        {{ description }}
-      </p>
-    </div>
-    <div class="px-6 py-4">
-      <button
-        class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        @click.prevent="$emit('onShare', id)"
-      >
-        Partager
-      </button>
-      <button
-        v-if="isOwner
-        return this."
-        class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        @click.prevent="$emit('onDelete', id)"
-      >
-        Supprimer
-      </button>
-      <button
-        v-if="isOwner
-        return this."
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        @click.prevent="$emit('onToggleStatus', id)"
-      >
-        {{ isActive ? "Fermer" : "Ré-ouvir" }}
-      </button>
-
-      <router-link
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        tag="button"
-        :to="{
-          name: isActive ? 'poll_show' : 'poll_result',
-          params: { id: id }
-        }"
-        >{{ isActive ? "Voter" : "Résultats" }}</router-link
-      >
-    </div>
-  </div> -->
 </template>
 
 <script>
@@ -114,10 +71,6 @@ export default {
       required: true
     },
     isActive: {
-      type: Boolean,
-      required: true
-    },
-    isJoinable: {
       type: Boolean,
       required: true
     }

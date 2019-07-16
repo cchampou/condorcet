@@ -17,7 +17,6 @@
           <Card
             class="md:mx-2"
             v-bind="poll"
-            :isJoinable="false"
             :userId="userId"
             @onShare="copyMagicLink"
             @onToggleStatus="togglePoll"
